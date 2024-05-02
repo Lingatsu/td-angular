@@ -14,8 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,6 @@ import { MatInputModule } from '@angular/material/input'
     MatListModule,
     NoopAnimationsModule,
     MatFormFieldModule,
-    MatSlideToggleModule,
     MatInputModule,
   ],
   providers: [],

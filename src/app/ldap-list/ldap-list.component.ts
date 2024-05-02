@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserLdap } from '../models/user-ldap';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { LDAP_USERS } from '../models/ldap-mock-data';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { UsersService } from '../service/users.service';
+import { Router } from '@angular/router';
 MatSlideToggleChange
 
 @Component({
@@ -23,7 +24,7 @@ dataSource = new MatTableDataSource<UserLdap>([]);
 
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null;
 
-  constructor() {
+  constructor(private usersService: UsersService, private router: Router) {
     this.paginator = null;
   }
 
@@ -40,12 +41,16 @@ dataSource = new MatTableDataSource<UserLdap>([]);
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   private getUsers() : void {
-    if (this.unactiveSelected) {
-      this.dataSource.data = LDAP_USERS.filter (user => !user.active); // parenthèse a ajouter ?
-    }
-    else {
-      this.dataSource.data = LDAP_USERS;
-    }
+    this.usersService.getUsers().subscribe(
+      users => {
+        if (this.unactiveSelected) {
+          this.dataSource.data = users.filter (user => user.active === false);
+        }
+        else {
+          this.dataSource.data = users;
+        }
+      }
+    )
   }
 }
 function user(value: UserLdap, index: number, array: UserLdap[]): value is UserLdap {
