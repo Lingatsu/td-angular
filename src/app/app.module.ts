@@ -15,13 +15,16 @@ import { MatListModule } from '@angular/material/list';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { LdapDetailsComponent } from './ldap-details/ldap-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LdapListComponent,
     PageNotFoundComponent,
-    NavbarComponent
+    NavbarComponent,
+    LdapDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,8 @@ import { MatInputModule } from '@angular/material/input';
     NoopAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

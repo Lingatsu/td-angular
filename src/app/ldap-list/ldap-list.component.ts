@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { UsersService } from '../service/users.service';
 import { Router } from '@angular/router';
-MatSlideToggleChange
 
 @Component({
   selector: 'app-ldap-list',
@@ -13,6 +12,13 @@ MatSlideToggleChange
   styleUrls: ['./ldap-list.component.css'],
 })
 export class LdapListComponent implements OnInit {
+edit(login: string) : void {
+  this.router.navigate(['user/', login]).then( (e : boolean) : void =>{
+    if (!e) {
+      console.error('Navigation has failed !');
+    }
+  });
+}
 unactiveSelected: any;
 unactiveChanged($event: MatSlideToggleChange) : void{
   this.unactiveSelected = $event.checked;
