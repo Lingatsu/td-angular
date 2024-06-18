@@ -13,7 +13,7 @@ export class InMemoryUsersService implements InMemoryDbService {
     return {users};
   }
 
-  genId(users: UserLdap[]):number {
+  genId(users: UserLdap[]): number {
     console.log('InMemoryUsersService.genId');
     return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 4;
   }

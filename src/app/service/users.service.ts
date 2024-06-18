@@ -9,8 +9,20 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class UsersService {
 
+  users: UserLdap[] = LDAP_USERS;
   private usersUrl = 'api/users';
   private httpOptions = new HttpHeaders({'Content-Type': 'application/json'});
+
+  constructor(private http: HttpClient) {
+  }
+
+  getUsers(): Observable<UserLdap[]> {
+    return this.http.get<UserLdap[]>(this.usersUrl);
+  }
+
+  getUser(id: number): Observable<UserLdap> {
+    return this.http.get<UserLdap>(this.usersUrl + '/' + id);
+  }
 
   addUser(user: UserLdap): Observable<UserLdap> {
     return this.http.post<UserLdap>(this.usersUrl, user, {
@@ -28,17 +40,8 @@ export class UsersService {
     {headers: this.httpOptions});
   }
 
-  users: UserLdap[] = LDAP_USERS;
 
-  getUsers(): Observable<UserLdap[]> {
-    return this.http.get<UserLdap[]>(this.usersUrl);
-  }
 
-  getUser(id: number): Observable<UserLdap> {
-    return this.http.get<UserLdap>(this.usersUrl + '/' + id);
-  }
 
-  constructor(private http: HttpClient) {
-  }
 
 }

@@ -14,7 +14,7 @@ import {ConfirmValidParentMatcher} from "../ldap-details/passwords-validator.dir
 export class LdapEditComponent extends LdapDetailsComponent implements OnInit {
 
   constructor(
-    private userService: UsersService,
+    private usersService: UsersService,
     private route: ActivatedRoute,
     fb: FormBuilder,
     router: Router,
@@ -29,14 +29,14 @@ export class LdapEditComponent extends LdapDetailsComponent implements OnInit {
 
 
   private getUser(): void {
-    const login = this.route.snapshot.paramMap.get('id');
+    const id : number = Number(this.route.snapshot.paramMap.get('id'));
 
-    if (login == null) {
-      console.error("can't retreive user id from URL");
+    if (id == null) {
+      console.error("can't retrieve user id from URL");
       return;
     }
 
-    this.userService.getUser(login).subscribe(
+    this.usersService.getUser(id).subscribe(
       {
         next: (user) => {
           this.user = user;
@@ -56,7 +56,7 @@ export class LdapEditComponent extends LdapDetailsComponent implements OnInit {
   validateForm(): void {
     console.log('LdapEditComponent  -  ValidateForm');
     this.processValidateRunning = true;
-    this.userService.updateUser(this.getUserFromFormControl()).subscribe(
+    this.usersService.updateUser(this.getUserFromFormControl()).subscribe(
       {
         next: (value) => {
           this.processValidateRunning = false;
