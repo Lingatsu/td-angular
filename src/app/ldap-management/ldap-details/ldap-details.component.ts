@@ -26,7 +26,7 @@ export abstract class LdapDetailsComponent {
   userForm: FormGroup = this.fb.group({
 
     login: [''],
-    nom: [''],
+    nom: ['' ],
     prenom: [''],
 
     // groupe de données imbriquées
@@ -83,7 +83,7 @@ export abstract class LdapDetailsComponent {
   private formGetValue(name: string): string {
     const control = this.userForm.get(name);
     if (control === null) {
-      console.error("L")
+      console.error("L'objet '" + name + "' du formulaire n'existe pas.")
       return ""
     }
     return control.value;
@@ -119,7 +119,7 @@ export abstract class LdapDetailsComponent {
       login: this.formGetValue('login'),
       nom: this.formGetValue('nom'),
       prenom: this.formGetValue('prenom'),
-      nomComplet: this.formGetValue('nom') + '' + this.formGetValue('prenom'),
+      nomComplet: this.formGetValue('nom') + ' ' + this.formGetValue('prenom'),
       mail: this.formGetValue('mail'),
       employeNumero: 1,
       employeNiveau: 1,
@@ -145,7 +145,7 @@ export abstract class LdapDetailsComponent {
   protected updateLogin(): void {
     const control = this.userForm.get('login');
     if (control === null) {
-      console.error("l'objet login du formulair n'existe pas ");
+      console.error("l'objet login du formulaire n'existe pas ");
       return;
     }
     control.setValue((this.formGetValue('prenom') + '.' + this.formGetValue('nom')).toLowerCase());
