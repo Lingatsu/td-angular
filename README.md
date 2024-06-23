@@ -1,4 +1,17 @@
-<<<<<<< HEAD
+## TD Angular
+TD 1 à 7 pour la prise en main d'Angular réalisé par Kévin Barbin.
+
+# Consignes d'éxécution
+1) Effectuer un gitclone `https://github.com/Lingatsu/td-angular.git`
+2) Faites un `git checkout td7` si vous souhaitez vous placer sur la branche correspondant au dernier td.
+3) Ecrivez `ng serve --open` dans le command line pour lancer l'application
+4) Naviguez à l'url `http://localhost:4200/`
+5) Ecrivez un login et un password aléatoire
+
+# Résultat Final
+![Page login](login-angular.png)
+![Page users](users-angular.png)
+
 # IdentityManagement
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
@@ -26,6 +39,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-=======
-# td-angular
->>>>>>> 91e4b6037b79a241262c094dbcd6db1b1e54f521
+
